@@ -1,0 +1,31 @@
+@extends("Backend.v_layout.app")
+@section('content')
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body border-top">
+                    <h5 class="card-title">{{ $judul }}</h5>
+
+                    <div class="alert alert-success" role="alert">
+                        <h4 class="alert-heading">Selamat Datang {{ Auth::user()->nama }}</h4>
+
+                        Aplikasi Toko Online dengan hak akses yang anda miliki sebagai
+                        <b>
+                            @if (Auth::user()->role == 2)
+                                Bartender
+                            @elseif (Auth::user()->role == 1)
+                                Kasir
+                            @elseif (Auth::user()->role == 0)
+                                Admin
+                            @endif
+                        </b>
+                        
+                        Ini adalah halaman utama dari aplikasi Web Programming. Studi Kasus Toko Online.
+                        <hr>
+                        <p>Kuliah...? BSI Aja !!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
