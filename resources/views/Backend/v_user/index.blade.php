@@ -8,8 +8,8 @@
         </div>
         <div class="card-body">
           <div class="col d-flex justify-content-end">
-            <a href="{{ route('backend.user.create') }}">
-              <button type="button" class="btn btn-primary">Tambah</button>
+            <a href="#">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createUser">Tambah</button>
             </a>
           </div>
           <div class="table-responsive table-hover mt-3">
@@ -44,8 +44,8 @@
                             @endif
                         </td>
                         <td>
-                          <a href="{{ route('backend.user.show', $row->id) }}">
-                            <button type="button" class="btn btn-info btn-sm" title="Show Data">
+                          <a href="#">
+                            <button type="button" class="btn btn-info btn-sm" title="Show Data" data-toggle="modal" data-target="#showFotoUser">
                               <i class="fas fa-image"></i>
                             </button>
                           </a>
@@ -70,4 +70,6 @@
       </div>
     </div>
 </div>
+  @include('Backend.v_user.create')
+  @include('Backend.v_user.show')
 @endsection

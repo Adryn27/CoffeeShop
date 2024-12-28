@@ -145,8 +145,21 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Selamat Datang, {{ Auth::user()->nama }}</span>
-                                <img class="img-profile rounded-circle"
-                                    src="{{ asset('Admin/img/undraw_profile.svg') }}">
+                                @if (Auth::user()->foto)
+                                    <img
+                                        src="{{ asset('storage/img-user/' . Auth::user()->foto) }}"
+                                        alt="user"
+                                        class="rounded-circle"
+                                        width="31"
+                                    />
+                                @else
+                                    <img
+                                        src="{{ asset('storage/img-user/undraw_profile.png') }}"
+                                        alt="user"
+                                        class="rounded-circle"
+                                        width="31"
+                                    />
+                                @endif
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -226,7 +239,60 @@
 
     <!-- Page level custom scripts -->
     <script src="{{ asset('Admin/js/demo/datatables-demo.js') }}"></script>
-    
+
+    <!-- Plugin Sweetalert -->
+    <script src="{{ asset('Fitur/plugins/sweetalert/sweetalert2.all.min.js')}}"></script>
+    @if (session('success'))
+      <script>
+        Swal.fire({
+          icon: 'success',
+          title: 'Berhasil',
+          text: "{{ session('success') }}"
+        })
+      </script>
+    @endif
+
+    <script type="text/javascript">
+      // Konfirmasi delete
+      $('.show_confirm').click(function(event){
+        var form=$(this).closest("form");
+        var konfdelete=$(this).data("konf-delete");
+        event.preventDefault();
+        Swal.fire({
+          title: 'Konfirmasi Hapus Data?',
+          html: "Data yang dihapus <strong>" + konfdelete + "</strong> tidak dapat dikembalikan!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Ya, dihapus',
+          cancelButtonText: 'Batal',
+        }).then((result)=>{
+          if(result.isConfirmed){
+            Swal.fire('Terhapus!', 'Data berhasil dihapus.', 'success')
+              .then(()=>{
+                form.submit();
+              });
+          }
+        });
+      });
+    </script>
+
+    <!-- Script Preview Foto -->
+    <script>
+    //Preview Foto
+        function previewFoto(){
+            const foto = document.querySelector('input[name="foto"]');
+            const fotoPreview = document.querySelector('.foto-preview');
+            fotoPreview.style.display = 'block';
+            const fotoReader = new FileReader();
+            fotoReader.readAsDataURL(foto.files[0]);
+            fotoReader.onload = function(fotoEvent) {
+            fotoPreview.src = fotoEvent.target.result;
+            fotoPreview.style.width = '100%';
+            }
+        }
+    </script>
 
 </body>
 
