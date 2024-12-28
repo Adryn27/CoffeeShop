@@ -5,7 +5,6 @@
             <div class="card">
                 <div class="card-body border-top">
                     <h5 class="card-title">{{ $judul }}</h5>
-
                     <div class="alert alert-success" role="alert">
                         <h4 class="alert-heading">Selamat Datang {{ Auth::user()->nama }}</h4>
 

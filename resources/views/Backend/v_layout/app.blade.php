@@ -23,6 +23,8 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('Admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <!-- Custom styles for basicdatatable-->
+    <link href="{{ asset('Admin/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 
 </head>
 
@@ -43,7 +45,7 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
+            <!-- Nav Item - Home -->
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('backend.beranda') }}">
                     <i class="fas fa-fw fa-home"></i>
@@ -58,17 +60,17 @@
                 Interface
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - User -->
             @if (Auth::user()->role=="0")
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="{{ route('backend.user.index') }}">
                     <i class="fas fa-fw fa-user"></i>
                     <span>User</span>
                 </a>  
             </li>
             @endif
 
-            <!-- Nav Item - Utilities Collapse Menu -->
+            <!-- Nav Item - Data Menu -->
             @if (Auth::user()->role=="0")
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -85,7 +87,7 @@
             </li>
             @endif
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - Pesanan -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
@@ -104,7 +106,7 @@
                 </div>
             </li>
 
-            <!-- Nav Item - Charts -->
+            <!-- Nav Item - Transaksi -->
             @if (Auth::user()->role=="0"||Auth::user()->role=="1")
             <li class="nav-item">
                 <a class="nav-link" href="charts.html">
@@ -112,7 +114,12 @@
                     <span>Transaksi</span></a>
             </li>
             @endif
-
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
         </ul>
         <!-- End of Sidebar -->
 
@@ -212,6 +219,14 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('Admin/js/sb-admin-2.min.js') }}"></script>
+
+    <!-- Page level plugins -->
+    <script src="{{ asset('Admin/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('Admin/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{{ asset('Admin/js/demo/datatables-demo.js') }}"></script>
+    
 
 </body>
 
