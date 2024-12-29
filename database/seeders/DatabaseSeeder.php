@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Kategori;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -37,6 +38,9 @@ class DatabaseSeeder extends Seeder
             'role' => '2',
             'hp' => '081234567890',
             'password' => bcrypt('p@55word'),
+        ]);
+        Kategori::create([
+            'nama_kategori' => 'Kopi'
         ]);
     }
 }
