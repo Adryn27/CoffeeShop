@@ -21,7 +21,6 @@
                 <tr>
                     <th>No</th>
                     <th>Nama Kategori</th>
-                    <th>No.HP</th>
                     <th>Aksi</th>
                 </tr>
               </thead>
@@ -30,17 +29,6 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $row->nama_kategori }}</td>
-                        <td>{{ $row->email }}</td>
-                        <td>{{ $row->hp }}</td>
-                        <td>
-                            @if ($row->role == 2)
-                                <span class="badge bg-primary" style="color: white">Bartender</span>
-                            @elseif ($row->role == 1)
-                                <span class="badge bg-warning" style="color: white">Kasir</span>    
-                            @elseif ($row->role == 0)
-                                <span class="badge bg-success" style="color: white">Admin</span>    
-                            @endif
-                        </td>
                         <td>
                           <a href="{{ route('backend.kategori.show', $row->id) }}">
                             <button type="button" class="btn btn-info btn-sm" title="Show Data">

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\kategori;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 
 class KategoriController extends Controller
@@ -12,7 +12,7 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        $kategori = kategori::orderBy('nama_kategori', 'asc')->get();
+        $kategori = Kategori::orderBy('nama_kategori', 'asc')->get();
         return view('backend.v_kategori.index', [
             'judul' => 'kategori',
             'index' => $kategori
