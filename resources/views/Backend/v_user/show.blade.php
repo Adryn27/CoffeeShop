@@ -1,4 +1,4 @@
-<div class="modal fade text-left" id="showFotoUser" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade text-left" id="showFotoUser{{ $row->id }}" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -9,7 +9,12 @@
         </div>
         <div class="modal-body">
             <div class="col-md-6">
-               
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label>Foto Utama</label>
+                    <img src="{{ asset('storage/img-produk/' . $row->foto) }}" class="foto-preview" width="100%">
+                </div>
+              </div>
             </div>
         </div>
       </div>

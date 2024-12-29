@@ -45,7 +45,7 @@
                         </td>
                         <td>
                           <a href="#">
-                            <button type="button" class="btn btn-info btn-sm" title="Show Data" data-toggle="modal" data-target="#showFotoUser">
+                            <button type="button" class="btn btn-info btn-sm" title="Show Data" data-toggle="modal" data-target="#showFotoUser{{ $row->id }}">
                               <i class="fas fa-image"></i>
                             </button>
                           </a>
