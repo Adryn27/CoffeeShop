@@ -6,7 +6,7 @@
         <div class="col-md-10 col-sm-10"> <!-- Atur lebar card di berbagai layar -->
             <div class="card">
                 <div class="card-header">
-                    <h3>{{ $judul }}</h3>
+                    <h3><b>{{ $judul }}</b></h3>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('backend.menu.store') }}" method="POST" enctype="multipart/form-data">
@@ -30,7 +30,7 @@
                             <div class="col-md-8">
                                 <div class="form-group">
                                     <label>Kategori</label>
-                                    <select name="kategori_id" class="form-select @error('kategori_id') is-invalid @enderror">
+                                    <select name="kategori_id" class="form-control @error('kategori_id') is-invalid @enderror">
                                         <option value="" {{ old('kategori_id') == '' ? 'selected' : '' }}>- Pilih Kategori -</option>
                                         @foreach ( $kategori as $k ) 
                                         <option value="{{ $k->id }}">{{ $k->nama_kategori }}</option>
@@ -45,7 +45,7 @@
             
                                 <div class="form-group">
                                     <label>Nama Menu</label>
-                                    <input type="text" name="nama_menu" value="{{ old('nama_menu') }}" class="form-control @error('nama_menu') is-invalid @enderror" placeholder="Masukkan Nama Produk">
+                                    <input type="text" name="nama_menu" value="{{ old('nama_menu') }}" class="form-control @error('nama_menu') is-invalid @enderror" placeholder="Masukkan Nama Menu">
                                     @error('nama_menu')
                                         <div class="invalid-feedback alert-danger">
                                             {{ $message }}
@@ -55,7 +55,7 @@
             
                                 <div class="form-group">
                                     <label>Deskripsi</label>
-                                    <textarea name="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror" id="ckeditor"></textarea>
+                                    <textarea name="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror"></textarea>
                                     @error('deskripsi')
                                         <div class="invalid-feedback alert-danger">
                                             {{ $message }}
@@ -77,9 +77,9 @@
             
                         <div class="row mt-3">
                             <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
                                 <a href="{{ route('backend.menu.index') }}">
-                                    <button type="button" class="btn btn-secondary">Kembali</button>
+                                    <button type="button" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Kembali</button>
                                 </a>
                             </div>
                         </div>

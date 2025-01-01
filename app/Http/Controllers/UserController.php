@@ -28,7 +28,7 @@ class UserController extends Controller
     public function create()
     {
         return view('backend.v_user.create', [
-            'judul'=>'Tambah User'
+            'judul'=>'Tambah Pengguna'
         ]);
     }
 
@@ -79,11 +79,7 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        $user = User::findOrFail($id);
-        return view('backend.v_user.show', [
-            'judul'=> 'Foto Pengguna',
-            'show'=> $user,
-        ]);
+        //
     }
 
     /**
@@ -93,7 +89,7 @@ class UserController extends Controller
     {
         $user=User::findOrFail($id);
         return view('backend.v_user.edit', [
-            'judul'=>'Ubah User',
+            'judul'=>'Edit Pengguna',
             'edit'=>$user
         ]);
     }

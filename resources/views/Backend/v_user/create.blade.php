@@ -6,7 +6,7 @@
         <div class="col-md-10 col-sm-10"> <!-- Atur lebar card di berbagai layar -->
             <div class="card">
                 <div class="card-header">
-                    <h3>{{ $judul }}</h3>
+                    <h3><b>{{ $judul }}</b></h3>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('backend.user.store') }}" method="POST" enctype="multipart/form-data">
@@ -32,9 +32,9 @@
                                     <label>Role</label>
                                     <select name="role" class="form-control @error('role') is-invalid @enderror">
                                         <option value="" {{ old('role') == '' ? 'selected' : '' }}>- Pilih Role -</option>
-                                        <option value="1" {{ old('role') == '0' ? 'selected' : '' }}>Admin</option>
+                                        <option value="0" {{ old('role') == '0' ? 'selected' : '' }}>Admin</option>
                                         <option value="1" {{ old('role') == '1' ? 'selected' : '' }}>Kasir</option>
-                                        <option value="0" {{ old('role') == '2' ? 'selected' : '' }}>Bartender</option>
+                                        <option value="2" {{ old('role') == '2' ? 'selected' : '' }}>Bartender</option>
                                     </select>
                                     @error('role')
                                         <div class="invalid-feedback alert-danger">
@@ -97,9 +97,9 @@
             
                         <div class="row mt-3">
                             <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
                                 <a href="{{ route('backend.user.index') }}">
-                                    <button type="button" class="btn btn-secondary">Kembali</button>
+                                    <button type="button" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Kembali</button>
                                 </a>
                             </div>
                         </div>

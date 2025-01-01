@@ -4,7 +4,7 @@
 <div class="col-12">
       <div class="card mt-3">
         <div class="card-header">
-          <h3>{{ $judul }}</h3>
+          <h3><b>{{ $judul }}</b></h3>
         </div>
         <div class="card-body">
           <div class="col d-flex justify-content-end">
@@ -20,6 +20,7 @@
               <thead>
                 <tr>
                     <th>No</th>
+                    <th>Foto</th>
                     <th>Nama</th>
                     <th>Email</th>
                     <th>No.HP</th>
@@ -31,6 +32,13 @@
                 @foreach ($index as $row)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
+                        <td>
+                          @if ($row->foto)
+                            <img src="{{ asset('storage/img-user/' . $row->foto) }}" width="50px" height="60px" alt="Foto Pengguna">
+                          @else
+                            <img src="{{ asset('storage/img-user/undraw_profile.png') }}" width="50px" alt="Foto Pengguna">
+                          @endif
+                        </td>
                         <td>{{ $row->nama }}</td>
                         <td>{{ $row->email }}</td>
                         <td>{{ $row->hp }}</td>
@@ -44,22 +52,16 @@
                             @endif
                         </td>
                         <td>
-                          <a href="{{ route('backend.user.show', $row->id) }}">
-                            <button type="button" class="btn btn-info btn-sm">
-                              <i class="fas fa-image"></i>
-                            </button>
-                          </a>
-
                             <a href="{{ route('backend.user.edit', $row->id) }}">
                                 <button class="btn btn-warning btn-sm">
-                                  <i class="far fa-edit"></i></button>
+                                  <i class="far fa-edit"></i> Edit</button>
                             </a>
 
                             <form action="{{ route('backend.user.destroy', $row->id) }}" method="POST" style="display: inline-block">
                                 @method('delete')
                                 @csrf
 
-                                <button type="submit" class="btn btn-danger btn-sm show_confirm" data-konf-delete="{{ $row->nama }}"><i class="fas fa-trash"></i></button>
+                                <button type="submit" class="btn btn-danger btn-sm show_confirm" data-konf-delete="{{ $row->nama }}"><i class="fas fa-trash"> Hapus</i></button>
                             </form>
                         </td>
                     </tr>

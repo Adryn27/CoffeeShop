@@ -4,7 +4,7 @@
 <div class="col-12">
     <div class="card mt-3">
       <div class="card-header">
-        <h3>{{ $judul }}</h3>
+        <h3><b>{{ $judul }}</b></h3>
       </div>
       <div class="card-body">
         <div class="col d-flex justify-content-end">
@@ -36,20 +36,15 @@
                     <td>{{ $row->nama_menu }}</td>
                     <td>Rp{{ number_format($row->harga), 0, ',', '.' }}</td>
                     <td>
-                        <a href="{{ route('backend.menu.show', $row->id) }}">
-                          <button type="button" class="btn btn-info btn-sm" title="Show Data">
-                            <i class="fas fa-image"></i>
-                          </button>
-                        </a>
                         <a href="{{ route('backend.menu.edit', $row->id) }}">
-                            <button class="btn btn-warning btn-sm"><i class="far fa-edit"></i></button>
+                            <button class="btn btn-warning btn-sm"><i class="far fa-edit"></i> Edit</button>
                         </a>
 
                         <form action="{{ route('backend.menu.destroy', $row->id) }}" method="POST" style="display: inline-block">
                             @method('delete')
                             @csrf
 
-                            <button type="submit" class="btn btn-danger btn-sm show_confirm" data-konf-delete="{{ $row->nama_menu }}"><i class="fas fa-trash"></i></button>
+                            <button type="submit" class="btn btn-danger btn-sm show_confirm" data-konf-delete="{{ $row->nama_menu }}"><i class="fas fa-trash"> Hapus</i></button>
                         </form>
                     </td>
                 </tr>

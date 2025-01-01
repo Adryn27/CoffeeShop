@@ -3,7 +3,7 @@
     <div class="card">
         <div class="card-body">
             <form action="{{ route('backend.kategori.update', $edit->id) }}" method="POST">
-              @method('put')
+                @method('put')
                 @csrf 
 
                 <div class="form-group">
@@ -18,7 +18,7 @@
                 <div class="row mt-3">
                     <div class="col-md-12 text-center">
                         <button type="submit" class="btn btn-warning">Perbarui</button>
-                        <a href="{{ route('backend.kategori.edit') }}">
+                        <a href="{{ route('backend.kategori.index') }}">
                             <button type="button" class="btn btn-secondary">Kembali</button>
                         </a>
                     </div>
