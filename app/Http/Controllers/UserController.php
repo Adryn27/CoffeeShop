@@ -27,7 +27,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.v_user.create', [
+            'judul'=>'Tambah User'
+        ]);
     }
 
     /**
@@ -55,7 +57,7 @@ class UserController extends Controller
         $originalFileName=date('YmdHis') . '_' . uniqid() . '.' . $extension;
         $directory='storage/img-user/';
 
-        ImageHelper::uploadAndResize($file, $directory, $originalFileName, 400, 400);
+        ImageHelper::uploadAndResize($file, $directory, $originalFileName, 400, 500);
 
         $validatedData['foto']=$originalFileName;
     }
@@ -77,7 +79,11 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('backend.v_user.show', [
+            'judul'=> 'Foto Pengguna',
+            'show'=> $user,
+        ]);
     }
 
     /**
@@ -85,7 +91,11 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user=User::findOrFail($id);
+        return view('backend.v_user.edit', [
+            'judul'=>'Ubah User',
+            'edit'=>$user
+        ]);
     }
 
     /**
@@ -93,7 +103,43 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $user=User::findOrFail($id);
+        $rules=[
+            'nama'=>'required|max:255',
+            'role'=>'required',
+            'hp'=>'required|min:7|max:13',
+            'foto'=>'image|mimes:jpeg,jpg,png,gif|file|max:1024'
+        ];
+        $message=[
+            'foto.image'=>'Format gambar gunakan file dengan ekstensi jpeg, jpg, png, atau gif',
+            'foto.max'=>'Ukuran file gambar maksimal adalah 1024 KB',
+            'nama.required'=>'Isian nama wajib diisi'
+        ];
+        if($request->email != $user->email){
+            $rules['email']='required|max:255|email|unique:user';
+        }
+
+        $validatedData=$request->validate($rules, $message);
+        //menggunakan imageHelper
+        if($request->file('foto')){
+            // Hapus gambar lama
+            if($user->foto){
+                $oldImagePath=public_path('storage/img-user/') . $user->foto;
+                if(file_exists($oldImagePath)){
+                    unlink($oldImagePath);
+                }
+            }
+            $file = $request->file('foto');
+            $extension=$file->getClientOriginalExtension();
+            $originalFileName=date('YmdHis') . '_' . uniqid() . '.' . $extension;
+            $directory='storage/img-user/';
+
+            ImageHelper::uploadAndResize($file, $directory, $originalFileName, 400, 500);
+
+            $validatedData['foto']=$originalFileName;
+        }
+        $user->update($validatedData);
+        return redirect()->route('backend.user.index')->with('success', 'Data berhasil diperbaharui');
     }
 
     /**

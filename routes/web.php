@@ -19,4 +19,6 @@ Route::get('/logout',[LoginController::class,'logoutBackend'])->name('backend.lo
 
 // User
 Route::resource('/user',UserController::class, ['as'=>'backend'])->middleware('auth');
+
+// Kategori
 Route::resource('/kategori',KategoriController::class, ['as'=>'backend'])->middleware('auth');

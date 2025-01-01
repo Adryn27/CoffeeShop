@@ -8,8 +8,8 @@
         </div>
         <div class="card-body">
           <div class="col d-flex justify-content-end">
-            <a href="#">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createUser">Tambah</button>
+            <a href="{{ route('backend.user.create') }}">
+              <button type="button" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</button>
             </a>
           </div>
           <div class="table-responsive table-hover mt-3">
@@ -44,14 +44,15 @@
                             @endif
                         </td>
                         <td>
-                          <a href="#">
-                            <button type="button" class="btn btn-info btn-sm" title="Show Data" data-toggle="modal" data-target="#showFotoUser{{ $row->id }}">
+                          <a href="{{ route('backend.user.show', $row->id) }}">
+                            <button type="button" class="btn btn-info btn-sm">
                               <i class="fas fa-image"></i>
                             </button>
                           </a>
 
                             <a href="{{ route('backend.user.edit', $row->id) }}">
-                                <button class="btn btn-warning btn-sm"><i class="far fa-edit"></i></button>
+                                <button class="btn btn-warning btn-sm">
+                                  <i class="far fa-edit"></i></button>
                             </a>
 
                             <form action="{{ route('backend.user.destroy', $row->id) }}" method="POST" style="display: inline-block">
@@ -70,6 +71,4 @@
       </div>
     </div>
 </div>
-  @include('Backend.v_user.create')
-  @include('Backend.v_user.show')
 @endsection
