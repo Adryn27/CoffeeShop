@@ -29,8 +29,8 @@
                     <td> {{ $loop->iteration }} </td>
                     <td> {{ $row->nama_kategori }} </td>
                     <td>
-                      <a href="{{ route('backend.kategori.edit', $row->id) }}" title="Ubah Data">
-                        <button type="button" class="btn btn-warning btn-sm" title="Ubah Data"><i
+                      <a href="{{ route('backend.kategori.edit', $row->id) }}">
+                        <button type="button" class="btn btn-warning btn-sm"><i
                             class="far fa-edit"></i> Ubah</button>
                       </a>
                       <form method="POST" action="{{ route('backend.kategori.destroy', $row->id) }}"
@@ -38,7 +38,7 @@
                         @method('delete')
                         @csrf
                         <button type="submit" class="btn btn-danger btn-sm show_confirm"
-                          data-konf-delete="{{ $row->nama_kategori }}" title='Hapus Data'>
+                          data-konf-delete="{{ $row->nama_kategori }}">
                           <i class="fas fa-trash"></i> Hapus</button>
                       </form>
                     </td>
@@ -49,6 +49,5 @@
           </div>
         </div>
       </div>
-    </div>
 </div>
 @endsection

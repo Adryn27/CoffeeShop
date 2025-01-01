@@ -129,10 +129,10 @@ class UserController extends Controller
             $extension=$file->getClientOriginalExtension();
             $originalFileName=date('YmdHis') . '_' . uniqid() . '.' . $extension;
             $directory='storage/img-user/';
+            // Simpan gambar asli
+            $fileName= ImageHelper::uploadAndResize($file, $directory, $originalFileName, 400, 500);
 
-            ImageHelper::uploadAndResize($file, $directory, $originalFileName, 400, 500);
-
-            $validatedData['foto']=$originalFileName;
+            $validatedData['foto']=$fileName;
         }
         $user->update($validatedData);
         return redirect()->route('backend.user.index')->with('success', 'Data berhasil diperbaharui');
