@@ -7,17 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Menu extends Model
 {
     public $timestamp = true;
-    protected $table = 'produk';
+    protected $table = 'menu';
     protected $guarded = ['id'];
 
     protected $fillable = [
         'kategori_id',
         'user_id',
-        'status',
-        'nama_produk',
-        'detail',
+        'nama_menu',
+        'deskripsi',
         'harga',
-        'stok',
         'foto',
     ];
 

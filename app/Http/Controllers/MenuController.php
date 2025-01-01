@@ -12,7 +12,7 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menu = Menu::orderBy('nama_kategori', 'asc')->get();
+        $menu = Menu::orderBy('updated_at', 'desc')->get();
         return view('backend.v_menu.index', [
             'judul' => 'Daftar Menu',
             'menu' => $menu

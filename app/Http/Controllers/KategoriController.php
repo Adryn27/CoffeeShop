@@ -13,7 +13,6 @@ class KategoriController extends Controller
     public function index()
     {
         $kategori = Kategori::orderBy('nama_kategori', 'asc')->get();
-        dd($kategori->first());
         return view('backend.v_kategori.index', [
             'judul' => 'Kategori',
             'kategori' => $kategori

@@ -82,7 +82,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{ route('backend.kategori.index') }}">Daftar Kategori</a>
-                        <a class="collapse-item" href="{{ route('backend.produk.index') }}">Daftar Menu</a>
+                        <a class="collapse-item" href="{{ route('backend.menu.index') }}">Daftar Menu</a>
                 </div>
             </li>
             @endif

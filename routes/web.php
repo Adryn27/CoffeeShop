@@ -26,5 +26,5 @@ Route::resource('/user',UserController::class, ['as'=>'backend'])->middleware('a
 // Kategori
 Route::resource('/kategori',KategoriController::class, ['as'=>'backend'])->middleware('auth');
 
-Route::resource('/kategori',KategoriController::class, ['as'=>'backend'])->middleware('auth');
+// Menu
 Route::resource('/menu',MenuController::class, ['as'=>'backend'])->middleware('auth');
