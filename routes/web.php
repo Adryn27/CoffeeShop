@@ -3,6 +3,8 @@
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,5 +22,9 @@ Route::get('/logout',[LoginController::class,'logoutBackend'])->name('backend.lo
 // User
 Route::resource('/user',UserController::class, ['as'=>'backend'])->middleware('auth');
 
+
 // Kategori
 Route::resource('/kategori',KategoriController::class, ['as'=>'backend'])->middleware('auth');
+
+Route::resource('/kategori',KategoriController::class, ['as'=>'backend'])->middleware('auth');
+Route::resource('/menu',MenuController::class, ['as'=>'backend'])->middleware('auth');
