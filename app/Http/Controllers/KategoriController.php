@@ -24,7 +24,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        return view('backend.v_kategori.index', [
+        return view('backend.v_kategori.create', [
             'judul' => 'Tambah Kategori'
         ]);
     }
@@ -55,7 +55,7 @@ class KategoriController extends Controller
     public function edit(string $id)
     {
         $kategori = Kategori::findOrFail($id);
-        return view('backend.v_kategori.index', [
+        return view('backend.v_kategori.edit', [
             'judul' => 'kategori',
             'edit' => $kategori
         ]);
