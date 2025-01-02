@@ -6,11 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kategori extends Model
 {
-    public $timestamps = false;
-    protected $table = "kategori";
+    public $timestamp = false;
+    protected $table = 'kategori';
     protected $guarded = ['id'];
-
-    protected $fillable = [
-        'nama_kategori',
-    ];
+    protected $fillable = ['nama_kategori'];
 }
