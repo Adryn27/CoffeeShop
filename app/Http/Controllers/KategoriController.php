@@ -12,7 +12,7 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        $kategori = Kategori::orderBy('nama_kategori', 'asc');
+        $kategori = Kategori::orderBy('nama_kategori', 'asc')->get();
         return view('Backend.v_kategori.index', [
             'judul' => 'kategori',
             'kategori' => $kategori
@@ -24,7 +24,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        return view('Backend.v_kategori.index', [
+        return view('Backend.v_kategori.create', [
             'judul' => 'kategori',
         ]);
     }
@@ -40,7 +40,8 @@ class KategoriController extends Controller
 
         $validatedData = $request->validate($rules);
         Kategori::create($validatedData);
-        return redirect()->route('backend.kategori.edit')-with('success', 'Data Tersimpan');
+        
+        return redirect()->route('backend.kategori.index')->with('success', 'Data Tersimpan');
     }
 
     /**
@@ -72,6 +73,8 @@ class KategoriController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = kategori::findOrFail($id);
+        $user->delete();
+        return redirect()->route('backend.kategori.index')->with('success', 'Data berhasil dihapus');
     }
 }

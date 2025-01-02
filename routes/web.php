@@ -4,7 +4,6 @@ use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MenuController;
-use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
