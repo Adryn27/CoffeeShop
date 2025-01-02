@@ -68,7 +68,13 @@ class KategoriController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $kategori = Kategori::findOrFail($id);
+        $rules = [
+            'nama_kategori' => 'required|max:255|unique:kategori',
+        ];
+        $validatedData = $request->validate($rules);
+        $kategori->update($validatedData);
+        return redirect()->route('backend.kategori.index')->with('success', 'Data berhasil diperbaharui');
     }
 
     /**
