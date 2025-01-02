@@ -11,7 +11,7 @@ class Menu extends Model
     protected $guarded = ['id'];
 
     protected $fillable = [
-        'kategori_id',
+        'menu_id',
         'user_id',
         'nama_menu',
         'deskripsi',
