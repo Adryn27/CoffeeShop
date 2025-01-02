@@ -24,8 +24,8 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        return view('Backend.v_kategori.create', [
-            'judul' => 'kategori',
+        return view('backend.v_kategori.create', [
+            'judul' => 'Tambah Kategori'
         ]);
     }
 
@@ -40,8 +40,7 @@ class KategoriController extends Controller
 
         $validatedData = $request->validate($rules);
         Kategori::create($validatedData);
-        
-        return redirect()->route('backend.kategori.index')->with('success', 'Data Tersimpan');
+        return redirect()->route('backend.kategori.index')->with('success', 'Data Berhasil Tersimpan');
     }
 
     /**
@@ -57,7 +56,11 @@ class KategoriController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $kategori = Kategori::findOrFail($id);
+        return view('backend.v_kategori.edit', [
+            'judul' => 'kategori',
+            'edit' => $kategori
+        ]);
     }
 
     /**
