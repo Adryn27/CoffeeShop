@@ -20,25 +20,41 @@
           <thead>
             <tr>
                 <th>No</th>
-                <th>Nama</th>
+                <th>Kasir</th>
+                <th>Pelanggan</th>
+                <th>Total Harga</th>
+                <th>Status</th>
+                <th>Waktu Order</th>
                 <th>Aksi</th>
             </tr>
           </thead>
           <tbody>
-            @foreach ($pesan as $row )
-                    <td>
-                        <a href="{{ route('backend.pesanan.edit') }}">
-                            <button class="btn btn-warning btn-sm"><i class="far fa-edit"></i> Edit</button>
-                        </a>
+            @foreach ($pesan as $row)
+              <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $row->user->nama }}</td>
+                <td>{{ $row->pelanggan }}</td>
+                <td>{{ $row->total }}</td>
+                <td>
+                  @if($row->status == 'selesai')
+                    <span class="badge bg-success" style="color: white">Selesai</span>
+                  @else
+                    <span class="badge bg-warning" style="color: white">Pending</span>
+                  @endif
+                </td>
+                <td>{{ $row->created_at }}</td>
+                <td>
+                  <a href="{{ route('backend.pesanan.tambahTransaksi', $row->id) }}">
+                    <button class="btn btn-warning btn-sm"><i class="far fa-edit"></i> Edit</button>
+                </a>
 
-                        <form action="{{ route('backend.pesanan.destroy') }}" method="POST" style="display: inline-block">
-                            @method('delete')
-                            @csrf
-
-                            <button type="submit" class="btn btn-danger btn-sm show_confirm" data-konf-delete="#"><i class="fas fa-trash"> Hapus</i></button>
-                        </form>
-                    </td>
-                </tr>
+                <form action="{{ route('pesanan.destroy', $row->id) }}" method="POST" style="display: inline-block">
+                  @method('DELETE')
+                  @csrf
+                  <button type="submit" class="btn btn-danger btn-sm show_confirm" data-konf-delete="{{ $row->pelanggan }}"><i class="fas fa-trash"> Hapus</i></button>
+              </form>
+                </td>
+              </tr>
             @endforeach
           </tbody>
           </table>

@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('pesanan', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->bigInteger('subtotal');
-            $table->string('nama_kasir');
-            $table->enum('status', ['selesai', 'proses'])->default('proses');   
+            $table->string('pelanggan')->nullable();
+            $table->bigInteger('total')->nullable();
+            $table->enum('status', ['selesai', 'pending'])->default('pending');   
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('user');
         });

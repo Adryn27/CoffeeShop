@@ -42,5 +42,8 @@ class DatabaseSeeder extends Seeder
         Kategori::create([
             'nama_kategori' => 'Kopi'
         ]);
+        Kategori::create([
+            'nama_kategori' => 'Non-Kopi'
+        ]);
     }
 }

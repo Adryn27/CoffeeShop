@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\DetailPesananController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MenuController;
@@ -31,3 +32,12 @@ Route::resource('/menu',MenuController::class, ['as'=>'backend'])->middleware('a
 
 // Pesanan
 Route::resource('/pesanan',PesananController::class, ['as'=>'backend'])->middleware('auth');
+Route::get('/pesanan/{id}/create', [PesananController::class, 'tambahTransaksi'])->name('backend.pesanan.tambahTransaksi')->middleware('auth');
+Route::delete('/pesanan/{id}/delete', [PesananController::class, 'delete'])->name('pesanan.destroy');
+
+// Detail
+Route::post('/pesanan/detail/create',[DetailPesananController::class, 'store'])->name('detail.pesanan');
+Route::delete('/detail-pesanan/{id}', [DetailPesananController::class, 'delete'])->name('detail-pesanan.delete');
+Route::get('/detail-pesanan/selesai/{id}', [DetailPesananController::class, 'done'])->name('detail-pesanan.selesai');
+
+Route::put('/pesanan/{id}/selesai', [PesananController::class, 'update'])->name('pesanan.update');

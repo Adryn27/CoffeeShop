@@ -97,7 +97,6 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         @if (Auth::user()->role=="0"||Auth::user()->role=="1")
-                        <a class="collapse-item" href="register.html">Tambah Pesanan</a>
                         <a class="collapse-item" href="{{ route('backend.pesanan.index') }}">Data Pesanan</a>
                         @endif
                         @if (Auth::user()->role=="0"||Auth::user()->role=="2")
