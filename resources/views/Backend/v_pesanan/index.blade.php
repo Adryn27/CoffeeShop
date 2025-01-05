@@ -34,12 +34,12 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $row->user->nama }}</td>
                 <td>{{ $row->pelanggan }}</td>
-                <td>{{ $row->total }}</td>
+                <td>Rp {{ number_format($row->total), 0, ',', '.' }}</td>
                 <td>
-                  @if($row->status == 'selesai')
-                    <span class="badge bg-success" style="color: white">Selesai</span>
+                  @if($row->status == 'dibayar')
+                    <span class="badge bg-success" style="color: white">Bayar</span>
                   @else
-                    <span class="badge bg-warning" style="color: white">Pending</span>
+                    <span class="badge bg-warning" style="color: white">Belum</span>
                   @endif
                 </td>
                 <td>{{ $row->created_at }}</td>
@@ -52,7 +52,7 @@
                   @method('DELETE')
                   @csrf
                   <button type="submit" class="btn btn-danger btn-sm show_confirm" data-konf-delete="{{ $row->pelanggan }}"><i class="fas fa-trash"> Hapus</i></button>
-              </form>
+                </form>
                 </td>
               </tr>
             @endforeach

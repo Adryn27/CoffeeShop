@@ -104,15 +104,6 @@ class DetailPesananController extends Controller
         return redirect()->back()->with('success', 'Data Berhasil Dihapus');
     }
 
-    public function done($id)
-    {
-        $pesanan=Pesanan::find($id);
-        $data=[
-            'status'=>'selesai'
-        ];
-        $pesanan->update($data);
-        return redirect('/pesanan');
-    }
     
     /**
      * Display the specified resource.

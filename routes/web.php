@@ -6,6 +6,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PesananController;
+use App\Http\Controllers\ProsesPesananController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,10 +35,17 @@ Route::resource('/menu',MenuController::class, ['as'=>'backend'])->middleware('a
 Route::resource('/pesanan',PesananController::class, ['as'=>'backend'])->middleware('auth');
 Route::get('/pesanan/{id}/create', [PesananController::class, 'tambahTransaksi'])->name('backend.pesanan.tambahTransaksi')->middleware('auth');
 Route::delete('/pesanan/{id}/delete', [PesananController::class, 'delete'])->name('pesanan.destroy');
+Route::put('/pesanan/{id}/update', [PesananController::class, 'update'])->name('pesanan.update');
+Route::get('/pesanan/{id}/hitung', [PesananController::class, 'hitungPembayaran'])->name('pesanan.hitung');
+Route::get('/laporan',[PesananController::class,'form'])->name('laporan.form')->middleware('auth');
+Route::post('/laporan/cetak',[PesananController::class,'cetak'])->name('laporan.cetak')->middleware('auth');
+
+// Proses Pesanan
+Route::resource('/proses',ProsesPesananController::class, ['as'=>'backend'])->middleware('auth');
+Route::get('/detail-pesanan/selesai/{id}', [ProsesPesananController::class, 'done'])->name('detail-pesanan.selesai');
 
 // Detail
 Route::post('/pesanan/detail/create',[DetailPesananController::class, 'store'])->name('detail.pesanan');
 Route::delete('/detail-pesanan/{id}', [DetailPesananController::class, 'delete'])->name('detail-pesanan.delete');
-Route::get('/detail-pesanan/selesai/{id}', [DetailPesananController::class, 'done'])->name('detail-pesanan.selesai');
 
-Route::put('/pesanan/{id}/selesai', [PesananController::class, 'update'])->name('pesanan.update');
+

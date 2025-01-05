@@ -16,7 +16,9 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('pelanggan')->nullable();
             $table->bigInteger('total')->nullable();
-            $table->enum('status', ['selesai', 'pending'])->default('pending');   
+            $table->enum('proses', ['selesai', 'pending'])->default('pending');   
+            $table->enum('status', ['dibayar', 'belum'])->default('belum');   
+            $table->enum('layanan', ['dinein', 'takeaway'])->nullable();   
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('user');
         });

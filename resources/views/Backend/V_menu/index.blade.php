@@ -34,7 +34,7 @@
                     <td><img src="{{ asset('storage/img-menu/' . $row->foto) }}" width="50px" alt="Foto Menu"></td>
                     <td>{{ $row->kategori->nama_kategori }}</td>
                     <td>{{ $row->nama_menu }}</td>
-                    <td>Rp{{ number_format($row->harga), 0, ',', '.' }}</td>
+                    <td>Rp {{ number_format($row->harga), 0, ',', '.' }}</td>
                     <td>
                         <a href="{{ route('backend.menu.edit', $row->id) }}">
                             <button class="btn btn-warning btn-sm"><i class="far fa-edit"></i> Edit</button>

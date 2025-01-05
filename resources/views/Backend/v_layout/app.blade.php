@@ -100,7 +100,7 @@
                         <a class="collapse-item" href="{{ route('backend.pesanan.index') }}">Data Pesanan</a>
                         @endif
                         @if (Auth::user()->role=="0"||Auth::user()->role=="2")
-                        <a class="collapse-item" href="login.html">Proses Pesanan</a>
+                        <a class="collapse-item" href="{{ route('backend.proses.index') }}">Proses Pesanan</a>
                         @endif
                 </div>
             </li>
@@ -108,9 +108,9 @@
             <!-- Nav Item - Transaksi -->
             @if (Auth::user()->role=="0"||Auth::user()->role=="1")
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="{{ route('laporan.form') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Transaksi</span></a>
+                    <span>Laporan</span></a>
             </li>
             @endif
             <!-- Divider -->

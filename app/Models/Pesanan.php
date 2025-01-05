@@ -14,6 +14,8 @@ class Pesanan extends Model
         'user_id',
         'pelanggan',
         'status',
+        'proses',
+        'layanan',
         'total',
     ];
 

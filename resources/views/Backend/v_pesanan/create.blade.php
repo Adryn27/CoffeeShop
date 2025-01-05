@@ -9,6 +9,45 @@
           </div>
         </div>
     </div>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <form action="{{ route('pesanan.update', $pesanan->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="row mt-1">
+                        <div class="col-md-1">
+                            <label><b>Layanan</b></label>
+                        </div>
+                        <div class="col-md-4">
+                            <select name="layanan" class="form-control @error('layanan') is-invalid @enderror">
+                                <option value="" {{ old('layanan', $pesanan->layanan) == '' ? 'selected' : '' }}>- Pilih Layanan -</option>
+                                <option value="dinein" {{ old('layanan', $pesanan->layanan) == 'dinein' ? 'selected' : '' }}>Dine-In</option>
+                                <option value="takeaway" {{ old('layanan', $pesanan->layanan) == 'takeaway' ? 'selected' : '' }}>Takeaway</option>
+                            </select>
+                            @error('layanan')
+                                <div class="invalid-feedback alert-danger">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="col-md-2">
+                            <label><b>Nama Pelanggan</b></label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" name="pelanggan" class="form-control @error('pelanggan') is-invalid @enderror" value="{{ old('pelanggan', $pesanan->pelanggan) }}">
+                            @error('pelanggan')
+                                <div class="invalid-feedback alert-danger">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="col-md-6">
         <div class="card">
             <div class="card-body">
@@ -30,7 +69,7 @@
                         </form>
                     </div>
                 </div>
-
+                <hr>
                 <form action="{{ route('detail.pesanan') }}" method="POST">
                     @csrf
                     <input type="hidden" value="{{ Request::segment(2) }}" name="pesanan_id">
@@ -75,7 +114,6 @@
                         </div>
                     </div>
 
-
                     <div class="row mt-1">
                         <div class="col-md-4">
                             <label><b>Subtotal</b></label>
@@ -85,14 +123,17 @@
                         </div>
                     </div>
 
-                    <div class="row mt-1">
+                    <div class="row mt-4">
                         <div class="col-md-4">
                             
                         </div>
                         <div class="col-md-8">
-                            <a href="{{ route('backend.pesanan.index') }}">
+                            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#kembaliModal">
+                                <i class="fas fa-arrow-left"> Kembali</i>
+                            </button>
+                            {{-- <a href="{{ route('backend.pesanan.index') }}">
                                 <button type="button" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Kembali</button>
-                            </a>
+                            </a> --}}
                             <button type="submit" class="btn btn-primary">Tambah <i class="fas fa-arrow-down"></i></button>
                         </div>
                     </div>
@@ -104,93 +145,110 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-body">
-                <form action="" method="GET">
+                <div class="row">
+                    <div class="col-md-5">
+                        <label for="">Metode Pembayaran</label>
+                    </div>
+                    <div class="col-md-7">
+                        <button class="btn btn-success"><i class="fa fa-money-bill"> Cash</i></button>
+                        <button class="btn btn-primary"><i class="fa fa-credit-card"> Bank</i></button>
+                        <button class="btn btn-warning"><i class="fa fa-wallet"> Wallet</i></button>
+                    </div>
+                </div>
+                <hr>
+                <form action="{{ route('pesanan.hitung', $pesanan->id) }}" method="GET">
+                    @csrf
                     <div class="form-group">
                         <label for="">Total belanja</label>
                         <input type="number" value="{{ $pesanan->total }}" readonly name="total_belanja" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="">Dibayarkan</label>
-                        <input type="number" value="{{ request('dibayarkan') }}" name="dibayarkan" class="form-control">
+                        <input type="number" value="{{ old('dibayarkan', session('dibayarkan')) }}" name="dibayarkan" class="form-control">
                     </div>
                     <button type="submit" class="btn btn-primary btn-block"> Hitung</button>
                 </form>
+                
                 <hr>
                 <div class="form-group">
                     <label for="">Uang Kembalian</label>
-                    <input type="text" value="{{ number_format($kembalian), 0, ',', '.' }}" name="kembalian" class="form-control" readonly>
+                    <input type="text" value="{{ number_format(session('kembalian'), 0, ',', '.') }}" name="kembalian" class="form-control" readonly>
                 </div>
             </div>
         </div>
     </div>
-
+    
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive table-hover mt-3">
+                    <table id="dataTable" class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama Menu</th>
+                                <th>Qty</th>
+                                <th>Catatan</th>
+                                <th>Subtotal</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($pesandetail as $row)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $row->menu->nama_menu }}</td>
+                                <td>{{ $row->qty }}</td>
+                                <td>{{ $row->catatan }}</td>
+                                <td>Rp {{ number_format($row->subtotal), 0, ',', '.' }}</td>
+                                <td>
+                                    <form action="{{ route('detail-pesanan.delete', ['id' => $row->id]) }}" method="POST" style="display: inline-block">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                    </form>                                
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+    
+                </div>
+                <div class="col-md-12 text-center">
+                    <a href="{{ route('backend.pesanan.index') }}">
+                        <button type="button" class="btn btn-success"><i class="fas fa-file"></i> Simpan</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="col-md-12">
-    <div class="card">
-        <div class="card-body">
-            <form action="{{ route('pesanan.update', $pesanan->id) }}" method="POST">
+<!-- Modal -->
+<div class="modal fade" id="kembaliModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <!-- Pass the pesanan_id to the route via the action URL -->
+            <form action="{{ route('pesanan.destroy', ['id' => Request::segment(2)]) }}" method="POST">
                 @csrf
-                @method('PUT')
-                <div class="row mt-1">
-                    <div class="col-md-4">
-                        <label><b>Nama Pelanggan</b></label>
-                    </div>
-                    <div class="col-md-7">
-                        <input type="text" name="pelanggan" class="form-control" value="{{ old('pelanggan', $pesanan->pelanggan) }}">
-                    </div>
-                    <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Add</button>
+                @method('DELETE') <!-- Add the DELETE method for resource deletion -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Apakah Anda Yakin Ingin Kembali?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Memilih "Kembali" akan menghapus pesanan ini. 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger">Kembali</button>
                 </div>
             </form>
-            {{-- <div class="row mt-1">
-                <div class="col-md-4">
-                    <label><b>Nama Pelanggan</b></label>
-                </div>
-                <div class="col-md-8">
-                    <input type="text" class="form-control" name="pelanggan" value="{{ old('pelanggan', $pesanan->pelanggan ?? '') }}">
-                </div>
-            </div> --}}
-            <div class="table-responsive table-hover mt-3">
-                <table id="dataTable" class="table table-striped table-bordered">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Nama Menu</th>
-                            <th>Qty</th>
-                            <th>Catatan</th>
-                            <th>Subtotal</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($pesandetail as $row)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $row->menu->nama_menu }}</td>
-                            <td>{{ $row->qty }}</td>
-                            <td>{{ $row->catatan }}</td>
-                            <td>Rp {{ number_format($row->subtotal), 0, ',', '.' }}</td>
-                            <td>
-                                <form action="{{ route('detail-pesanan.delete', ['id' => $row->id]) }}" method="POST" style="display: inline-block">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
-                                </form>                                
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-
-            </div>
-            <div class="col-md-12 text-center">
-                <a href="{{ route('backend.pesanan.index') }}">
-                    <button type="button" class="btn btn-info"><i class="fas fa-file"></i> Pending</button>
-                </a>
-                <a href="{{ route('detail-pesanan.selesai', [Request::segment(2)]) }}" class="btn btn-success"><i class="fas fa-check"></i> Selesai</a>
-            </div>
         </div>
     </div>
 </div>
+
 
 @endsection
