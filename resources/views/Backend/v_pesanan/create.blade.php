@@ -285,6 +285,31 @@
             max-width: 100px;
             margin-bottom: 15px;
         }
+        .struk-detail {
+            margin-bottom: 20px;
+            border-top: 1px dashed #ddd;
+            padding-top: 10px;
+        }
+
+        .struk-detail table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .struk-detail th,
+        .struk-detail td {
+            padding: 8px 0;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .struk-detail th {
+            text-align: right;
+        }
+
+        .struk-detail .total {
+            font-weight: bold;
+        }
     </style>
     <div id="strukisi">
         <div class="header">
@@ -303,7 +328,7 @@
             <p>Kasir : {{ $pesanan->user->nama }}</p>
             <p>Pelanggan : {{ $pesanan->pelanggan }}</p>
         </div>
-        <table>
+        <table class="struk-detail">
             <thead>
                 <tr>
                     <th>No</th>

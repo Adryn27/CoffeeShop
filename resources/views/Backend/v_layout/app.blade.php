@@ -52,13 +52,17 @@
                     <span>Home</span></a>
             </li>
 
+            @if (Auth::user()->role=="0")
             <!-- Divider -->
             <hr class="sidebar-divider">
+            @endif
 
             <!-- Heading -->
+            @if (Auth::user()->role=="0")
             <div class="sidebar-heading">
                 Manajemen
             </div>
+            @endif
 
             <!-- Nav Item - User -->
             @if (Auth::user()->role=="0")
@@ -174,7 +178,7 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ route('backend.user.edit', Auth::user()->id) }}">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nama_menu');
             $table->text('deskripsi');
             $table->double('harga');
+            $table->enum('status',['sedia','tidak'])->default('sedia');
             $table->string('foto');
             $table->timestamps();
             $table->foreign('kategori_id')->references('id')->on('kategori');

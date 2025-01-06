@@ -58,6 +58,20 @@
                                         </div>
                                     @enderror
                                 </div>
+
+                                <div class="form-group">
+                                    <label>Status</label>
+                                    <select name="status" class="form-control @error('status') is-invalid @enderror">
+                                        <option value="" {{ old('status', $edit->status) == '' ? 'selected' : '' }}>- Pilih Status -</option>
+                                        <option value="sedia" {{ old('status', $edit->status) == 'sedia' ? 'selected' : '' }}>Tersedia</option>
+                                        <option value="tidak" {{ old('status', $edit->status) == 'tidak' ? 'selected' : '' }}>Tidak Tersedia</option>
+                                    </select>
+                                    @error('status')
+                                        <div class="invalid-feedback alert-danger">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
             
                                 <div class="form-group">
                                     <label>Deskripsi</label>

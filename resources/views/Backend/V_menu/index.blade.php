@@ -24,6 +24,7 @@
                 <th>Kategori</th>
                 <th>Nama Menu</th>
                 <th>Harga</th>
+                <th>Status</th>
                 <th>Aksi</th>
             </tr>
           </thead>
@@ -35,6 +36,13 @@
                     <td>{{ $row->kategori->nama_kategori }}</td>
                     <td>{{ $row->nama_menu }}</td>
                     <td>Rp {{ number_format($row->harga), 0, ',', '.' }}</td>
+                    <td>
+                      @if($row->status == 'sedia')
+                        <span class="badge bg-success" style="color: white">Tersedia</span>
+                      @else
+                        <span class="badge bg-warning" style="color: white">Tidak Tersedia</span>
+                      @endif
+                    </td>
                     <td>
                         <a href="{{ route('backend.menu.edit', $row->id) }}">
                             <button class="btn btn-warning btn-sm"><i class="far fa-edit"></i> Edit</button>

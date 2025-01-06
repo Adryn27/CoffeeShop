@@ -33,6 +33,7 @@
                             </div>
             
                             <div class="col-md-8">
+                                @if (Auth::user()->role=="0")
                                 <div class="form-group">
                                     <label>Role</label>
                                     <select name="role" class="form-control @error('role') is-invalid @enderror">
@@ -47,6 +48,7 @@
                                         </div>
                                     @enderror
                                 </div>
+                                @endif
             
                                 <div class="form-group">
                                     <label>Nama</label>
@@ -60,7 +62,7 @@
             
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="text" name="email" value="{{ old('email', $edit->email) }}" class="form-control @error('email') is-invalid @enderror" placeholder="Masukkan Email">
+                                    <input type="text" disabled name="email" value="{{ old('email', $edit->email) }}" class="form-control @error('email') is-invalid @enderror" placeholder="Masukkan Email">
                                     @error('email')
                                         <div class="invalid-feedback alert-danger">
                                             {{ $message }}

@@ -102,6 +102,7 @@ class MenuController extends Controller
             'nama_menu' => 'required|max:255|unique:menu,nama_menu,' . $id,
             'kategori_id' => 'required',
             'deskripsi' => 'required',
+            'status' => 'required',
             'harga' => 'required',
             'foto' => 'image|mimes:jpeg,jpg,png,gif|file|max:1024',
         ];
