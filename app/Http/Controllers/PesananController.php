@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\DetailPesanan;
 use App\Models\Menu;
 use App\Models\Pesanan;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -178,7 +179,27 @@ class PesananController extends Controller
 
     public function cetak(Request $request)
     {
-        
+        $request->validate([
+            'tanggal_awal'=>'required|date',
+            'tanggal_akhir'=>'required|date|after_or_equal:tanggal_awal'
+        ]);
+
+        $tanggalAwal=$request->input('tanggal_awal');
+        $tanggalAkhir=$request->input('tanggal_akhir');
+
+        $query=Pesanan::whereBetween('created_at', [$tanggalAwal, $tanggalAkhir])->orderBy('id','desc')->where('status', 'dibayar')->where('proses', 'selesai');
+
+        $pesan=$query->get();
+
+        $data=[
+            'judul'=>'Laporan Transaksi',
+            'tanggalAwal'=>$tanggalAwal,
+            'tanggalAkhir'=>$tanggalAkhir,
+            'cetak'=>$pesan
+        ];
+
+        $pdf=Pdf::loadView('backend.v_pesanan.cetak', $data);
+        return $pdf->stream('Laporan Transaksi.pdf');
     }
     /**
      * Store a newly created resource in storage.

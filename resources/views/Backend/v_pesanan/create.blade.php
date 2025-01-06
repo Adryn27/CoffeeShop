@@ -168,11 +168,17 @@
                     </div>
                     <button type="submit" class="btn btn-primary btn-block"> Hitung</button>
                 </form>
-                
                 <hr>
                 <div class="form-group">
                     <label for="">Uang Kembalian</label>
-                    <input type="text" value="{{ number_format(session('kembalian'), 0, ',', '.') }}" name="kembalian" class="form-control" readonly>
+                </div>
+                <div class="row">
+                    <div class="col-md-9">
+                        <input type="text" value="{{ number_format(session('kembalian'), 0, ',', '.') }}" name="kembalian" class="form-control" readonly>
+                    </div>
+                    <div class="col-md-3">
+                        <button onclick="printStruk()" class="btn btn-success" type="submit"><i class="fas fa-file-pdf"> Struk</i></button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -250,5 +256,96 @@
     </div>
 </div>
 
+<div id="struk" class="d-none">
+    <style>
+        .header {
+            padding: 20px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #000;
+        }
+        .head {
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .header p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .header .logo {
+            max-width: 100px;
+            margin-bottom: 15px;
+        }
+    </style>
+    <div id="strukisi">
+        <div class="header">
+            <div class="head">
+                <div class="row justify-content-center">
+                    <div class="col-md-2">
+                        <img src="{{ asset('Template/logo/logo64.png') }}" class="logo">
+                    </div>
+                    <div class="col-md-8">
+                        <h1>KopiKampus</h1>
+                        <p>KopiKampus, Teman yang Tepat di Setiap Langkah</p>
+                    </div>
+                </div>
+            </div>
+            <p>Waktu: {{ $pesanan->created_at }} </p>
+            <p>Kasir : {{ $pesanan->user->nama }}</p>
+            <p>Pelanggan : {{ $pesanan->pelanggan }}</p>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Menu</th>
+                    <th>Qty</th>
+                    <th>Catatan</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($pesandetail as $row)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $row->menu->nama_menu }}</td>
+                    <td>{{ $row->qty }}</td>
+                    <td>{{ $row->catatan }}</td>
+                    <td>Rp {{ number_format($row->subtotal), 0, ',', '.' }}</td>
+                    <td>
+                        <form action="{{ route('detail-pesanan.delete', ['id' => $row->id]) }}" method="POST" style="display: inline-block">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                        </form>                                
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function printStruk(){
+        var struk=document.getElementById("struk").innerHTML;
+
+        var print=document.createElement('iframe');
+        print.style.display='none';
+        document.body.appendChild(print);
+        print.contentDocument.write(struk);
+        print.contentWindow.print();
+        document.body.removeChild(print);
+    }
+</script>
 
 @endsection

@@ -57,7 +57,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                Manajemen
             </div>
 
             <!-- Nav Item - User -->
@@ -87,6 +87,11 @@
             </li>
             @endif
 
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading">
+                Pengelolaan
+            </div>
+
             <!-- Nav Item - Pesanan -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
@@ -108,9 +113,15 @@
             <!-- Nav Item - Transaksi -->
             @if (Auth::user()->role=="0"||Auth::user()->role=="1")
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('laporan.form') }}">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLap">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Laporan</span></a>
+                    <span>Laporan</span>
+                </a>
+                <div id="collapseLap" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{ route('laporan.formpesan') }}">Detail Pesanan</a>
+                        <a class="collapse-item" href="{{ route('laporan.form') }}">Transaksi</a>
+                </div>
             </li>
             @endif
             <!-- Divider -->

@@ -22,29 +22,31 @@
                 <th>No</th>
                 <th>No Pesanan</th>
                 <th>Pelanggan</th>
-                <th>Total</th>
-                <th>Layanan</th>
                 <th>Waktu Order</th>
+                <th>Detail Pesanan</th>
             </tr>
-          </thead>
-          <tbody>
-            @foreach ($pesan as $row)
-              <tr>
-                <td>{{ $loop->iteration }}</td>
-                <td>{{ $row->id }}</td>
-                <td>{{ $row->pelanggan }}</td>
-                <td>Rp {{ number_format($row->total), 0, ',', '.' }}</td>
-                <td>
-                    @if($row->layanan == 'dinein')
-                      <span class="badge bg-success" style="color: white">Dine-In</span>
-                    @else
-                      <span class="badge bg-primary" style="color: white">Takeaway</span>
-                    @endif
-                  </td>
-                <td>{{ $row->created_at }}</td>
-              </tr>
-            @endforeach
-          </tbody>
+            </thead>
+            <tbody>
+                @foreach ($pesan as $item)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $item->id }}</td>
+                        <td>{{ $item->pelanggan }}</td>
+                        <td>{{ $item->created_at }}</td>
+                        <td>
+                            <ul>
+                                @foreach ($item->detailPesanan as $detail)
+                                    <li>
+                                        <img src="{{ asset('storage/img-menu/' . $detail->menu->foto) }}" width="50px" alt="Foto Menu">
+                                        <span>{{ $detail->menu->nama_menu }} - {{ $detail->qty }}</span>
+                                    </li>
+                                    <p></p>
+                                @endforeach
+                            </ul>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
           </table>
         </div>
       </div>
@@ -56,10 +58,10 @@
 <div class="modal fade" id="cetakModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form action="{{ route('laporan.cetak') }}" method="POST" target="_blank">
+            <form action="{{ route('laporan.cetakpesan') }}" method="POST" target="_blank">
                 @csrf
                 <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Cetak Laporan Transaksi</h5>
+                    <h5 class="modal-title" id="deleteModalLabel">Cetak Laporan Detail Pesanan</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>

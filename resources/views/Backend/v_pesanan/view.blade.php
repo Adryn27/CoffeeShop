@@ -42,6 +42,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>Gambar</th>
                             <th>Nama Menu</th>
                             <th>Qty</th>
                             <th>Catatan</th>
@@ -52,6 +53,7 @@
                         @foreach ($pesan as $row)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
+                            <td><img src="{{ asset('storage/img-menu/' . $row->menu->foto) }}" width="100px" alt="Foto Menu"></td>
                             <td>{{ $row->menu->nama_menu }}</td>
                             <td>{{ $row->qty }}</td>
                             <td>{{ $row->catatan }}</td>

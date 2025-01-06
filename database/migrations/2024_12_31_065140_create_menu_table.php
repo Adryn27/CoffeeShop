@@ -14,15 +14,12 @@ return new class extends Migration
         Schema::create('menu', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('kategori_id');
-            $table->unsignedBigInteger('user_id');
             $table->string('nama_menu');
             $table->text('deskripsi');
             $table->double('harga');
             $table->string('foto');
             $table->timestamps();
             $table->foreign('kategori_id')->references('id')->on('kategori');
-            $table->foreign('user_id')->references('id')->on('user');
-
         });
     }
 

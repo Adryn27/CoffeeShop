@@ -28,7 +28,7 @@
                 <td>{{ $row->created_at }}</td>
                 <td>
                   <a href="{{ route('backend.proses.show', $row->id) }}">
-                    <button class="btn btn-primary btn-sm"><i class="far fa-eye"></i> Proses</button>
+                    <button class="btn btn-warning btn-sm"><i class="far fa-eye"></i> Proses</button>
                 </a>
                 </td>
               </tr>

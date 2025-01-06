@@ -62,35 +62,40 @@
             </div>
         </div>
     </div>
+    
     <table class="table">
         <thead>
             <tr>
                 <th>No</th>
                 <th>No Pesanan</th>
                 <th>Pelanggan</th>
-                <th>Total</th>
-                <th>Layanan</th>
                 <th>Waktu Order</th>
+                <th>Detail Pesanan</th>
             </tr>
           </thead>
           <tbody>
             @foreach ($cetak as $row)
               <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $row->id }}</td>
-                <td>{{ $row->pelanggan }}</td>
-                <td>Rp {{ number_format($row->total), 0, ',', '.' }}</td>
-                <td>
-                    @if($row->layanan == 'dinein')
-                        Dine-In
-                    @else
-                        Takeaway
-                    @endif
-                  </td>
-                <td>{{ $row->created_at }}</td>
+                    <td>{{ $row->id }}</td>
+                    <td>{{ $row->pelanggan }}</td>
+                    <td>{{ $row->created_at }}</td>
+                    <td>
+                        <ul>
+                            @foreach ($row->detailPesanan as $detail)
+                                <li>
+                                    <img src="{{ public_path('storage/img-menu/' . $detail->menu->foto) }}" width="50px">
+                                    <span>{{ $detail->menu->nama_menu }} - {{ $detail->qty }}</span>
+                                </li>
+                                <p></p>
+                            @endforeach
+                        </ul>
+                    </td>
               </tr>
             @endforeach
           </tbody>
     </table>
 </body>
 </html>
+
+

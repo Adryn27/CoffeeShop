@@ -46,7 +46,6 @@ class MenuController extends Controller
             'harga' => 'required',
             'foto' => 'required|image|mimes:jpeg,jpg,png,gif|file|max:1024',
         ]);
-        $validatedData['user_id'] = Auth::user()->id;
         if ($request->file('foto')) {
             $file = $request->file('foto');
             $extension = $file->getClientOriginalExtension();
@@ -106,7 +105,6 @@ class MenuController extends Controller
             'harga' => 'required',
             'foto' => 'image|mimes:jpeg,jpg,png,gif|file|max:1024',
         ];
-        $validatedData['user_id'] = Auth::user()->id;
         $validatedData = $request->validate($rules);
         if ($request->file('foto')) {
             //hapus gambar lama
