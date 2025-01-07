@@ -60,7 +60,7 @@
             
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="text" disabled name="email" value="{{ old('email', $edit->email) }}" class="form-control @error('email') is-invalid @enderror" placeholder="Masukkan Email">
+                                    <input type="text" name="email" value="{{ old('email', $edit->email) }}" class="form-control @error('email') is-invalid @enderror" placeholder="Masukkan Email">
                                     @error('email')
                                         <div class="invalid-feedback alert-danger">
                                             {{ $message }}
