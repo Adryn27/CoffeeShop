@@ -258,39 +258,66 @@
 
 <div id="struk" class="d-none">
     <style>
-        .header {
+        .struk-container {
+            width: 300px;
             padding: 20px;
-            margin-bottom: 30px;
-            border-bottom: 2px solid #000;
-        }
-        .head {
-            text-align: center;
-            padding: 20px;
-            margin-bottom: 30px;
+            margin: 0 auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #fff;
+            color: #333;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .header h1 {
-            font-size: 24px;
+        .struk-header {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .struk-header h1 {
             margin: 0;
+            font-size: 24px;
+        }
+
+        .struk-header p {
+            margin: 5px 0;
+            font-size: 12px;
+        }
+        .struk-header img {
+            max-width: 30px; 
+            margin-bottom: 10px;
+        }
+
+        
+        .struk-info {
+            margin-bottom: 20px;
+        }
+        
+        .struk-info p {
+            margin: 5px 0;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .struk-info .bold {
             font-weight: bold;
         }
 
-        .header p {
-            margin: 5px 0;
-            font-size: 14px;
-            color: #555;
-        }
-
-        .header .logo {
-            max-width: 100px;
-            margin-bottom: 15px;
-        }
         .struk-detail {
             margin-bottom: 20px;
             border-top: 1px dashed #ddd;
             padding-top: 10px;
         }
-
+        
+        .struk-detail p{
+            text-align: center;
+            margin: 5px 0;
+            font-size: 14px;
+            line-height: 1.5;
+        }
         .struk-detail table {
             width: 100%;
             border-collapse: collapse;
@@ -304,59 +331,108 @@
         }
 
         .struk-detail th {
-            text-align: right;
+            text-align: center;
         }
 
-        .struk-detail .total {
+        .total {
             font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .struk-bawah {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;           
+        }
+
+        .kiri {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .kanan {
+            font-size: 14px;
+        }
+
+        .struk-footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+        }
+
+        .struk-footer p {
+            margin: 5px 0;
+            color: #666;
+        }
+        @media print {
+            .struk-container {
+                width: 250px;
+                padding: 10px;
+                margin: 0;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            .struk-header h1 {
+                font-size: 22px;
+            }
+
+            .struk-footer {
+                font-size: 10px;
+            }
         }
     </style>
-    <div id="strukisi">
-        <div class="header">
-            <div class="head">
-                <div class="row justify-content-center">
-                    <div class="col-md-2">
-                        <img src="{{ asset('Template/logo/logo64.png') }}" class="logo">
-                    </div>
-                    <div class="col-md-8">
-                        <h1>KopiKampus</h1>
-                        <p>KopiKampus, Teman yang Tepat di Setiap Langkah</p>
-                    </div>
-                </div>
-            </div>
-            <p>Waktu: {{ $pesanan->created_at }} </p>
-            <p>Kasir : {{ $pesanan->user->nama }}</p>
-            <p>Pelanggan : {{ $pesanan->pelanggan }}</p>
+    <div class="struk-container">
+        <div class="struk-header">
+            <img src="{{ asset('Template/logo/logo64.png') }}">
+            <h1>KopiKampus</h1>
+            <p>Jl. Cut Mutia No.88</p>
         </div>
-        <table class="struk-detail">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Nama Menu</th>
-                    <th>Qty</th>
-                    <th>Catatan</th>
-                    <th>Subtotal</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($pesandetail as $row)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $row->menu->nama_menu }}</td>
-                    <td>{{ $row->qty }}</td>
-                    <td>{{ $row->catatan }}</td>
-                    <td>Rp {{ number_format($row->subtotal), 0, ',', '.' }}</td>
-                    <td>
-                        <form action="{{ route('detail-pesanan.delete', ['id' => $row->id]) }}" method="POST" style="display: inline-block">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
-                        </form>                                
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+        <div class="struk-info">  
+            <p><span class="bold">NoPsn :</span>{{ $pesanan->id }}</p>
+            <p><span class="bold">Waktu :</span>{{ $pesanan->created_at }} </p>
+            <p><span class="bold">Kasir :</span>{{ $pesanan->user->nama }}</p>
+        </div>
+        <div class="struk-detail">
+            <p>{{ $pesanan->pelanggan}} - ({{ $pesanan->layanan }})</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Menu</th>
+                        <th>Qty</th>
+                        <th>Catatan</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($pesandetail as $row)
+                    <tr>
+                        <td>{{ $row->menu->nama_menu }}</td>
+                        <td>{{ $row->qty }}</td>
+                        <td>{{ $row->catatan }}</td>
+                        <td>Rp{{ number_format($row->subtotal), 0, ',', '.' }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        <div class="struk-bawah">
+            <div class="kiri">Total</div>
+            <div class="total">Rp{{ number_format($pesanan->total), 0, ',', '.' }}</div>
+        </div>
+        <div class="struk-bawah">
+            <div class="kiri">Bayar</div>
+            <div class="kanan">Rp{{ number_format(session('dibayarkan')), 0, ',', '.' }}</div>
+        </div>
+        <div class="struk-bawah">
+            <div class="kiri">Kembalian</div>
+            <div class="kanan">Rp{{ number_format(session('kembalian')), 0, ',', '.' }}</div>
+        </div>
+        <div class="struk-footer">
+            <p>Terima kasih atas kunjungan Anda!</p>
+            <hr>
+            <p>KopiKampus, Teman yang Tepat di Setiap Langkah</p>
+        </div>
     </div>
 </div>
 

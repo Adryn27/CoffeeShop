@@ -23,6 +23,7 @@ Route::get('/logout',[LoginController::class,'logoutBackend'])->name('backend.lo
 
 // User
 Route::resource('/user',UserController::class, ['as'=>'backend'])->middleware('auth');
+Route::get('profile', [UserController::class, 'profil'])->name('profile')->middleware('auth');
 
 
 // Kategori

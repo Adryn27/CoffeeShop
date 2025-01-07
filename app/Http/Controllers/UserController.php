@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\ImageHelper;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -152,5 +153,14 @@ class UserController extends Controller
         }
         $user->delete();
         return redirect()->route('backend.user.index')->with('success','Data Berhasil Dihapus');
+    }
+
+    public function profil()
+    {
+        $user=Auth::user();
+        return view('Backend.v_user.profile', [
+            'judul'=>'Profil Pengguna',
+            'user'=>$user,
+        ]);
     }
 }

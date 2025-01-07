@@ -33,7 +33,6 @@
                             </div>
             
                             <div class="col-md-8">
-                                @if (Auth::user()->role=="0")
                                 <div class="form-group">
                                     <label>Role</label>
                                     <select name="role" class="form-control @error('role') is-invalid @enderror">
@@ -48,7 +47,6 @@
                                         </div>
                                     @enderror
                                 </div>
-                                @endif
             
                                 <div class="form-group">
                                     <label>Nama</label>
