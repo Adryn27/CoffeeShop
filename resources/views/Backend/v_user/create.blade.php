@@ -34,7 +34,7 @@
                                         <option value="" {{ old('role') == '' ? 'selected' : '' }}>- Pilih Role -</option>
                                         <option value="0" {{ old('role') == '0' ? 'selected' : '' }}>Admin</option>
                                         <option value="1" {{ old('role') == '1' ? 'selected' : '' }}>Kasir</option>
-                                        <option value="2" {{ old('role') == '2' ? 'selected' : '' }}>Bartender</option>
+                                        <option value="2" {{ old('role') == '2' ? 'selected' : '' }}>Barista</option>
                                     </select>
                                     @error('role')
                                         <div class="invalid-feedback alert-danger">

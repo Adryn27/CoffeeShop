@@ -44,7 +44,7 @@
                         <td>{{ $row->hp }}</td>
                         <td>
                             @if ($row->role == 2)
-                                <span class="badge bg-primary" style="color: white">Bartender</span>
+                                <span class="badge bg-primary" style="color: white">Barista</span>
                             @elseif ($row->role == 1)
                                 <span class="badge bg-warning" style="color: white">Kasir</span>    
                             @elseif ($row->role == 0)

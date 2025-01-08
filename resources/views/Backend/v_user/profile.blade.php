@@ -28,7 +28,7 @@
                                     <option value="" {{ old('role', $user->role) == '' ? 'selected' : '' }}>- Pilih Role -</option>
                                     <option value="0" {{ old('role', $user->role) == '0' ? 'selected' : '' }}>Admin</option>
                                     <option value="1" {{ old('role', $user->role) == '1' ? 'selected' : '' }}>Kasir</option>
-                                    <option value="2" {{ old('role', $user->role) == '2' ? 'selected' : '' }}>Bartender</option>
+                                    <option value="2" {{ old('role', $user->role) == '2' ? 'selected' : '' }}>Barista</option>
                                 </select>
                             </div>
         

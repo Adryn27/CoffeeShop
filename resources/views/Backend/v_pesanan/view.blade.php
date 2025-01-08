@@ -3,9 +3,9 @@
 
 <style>
     input[type="checkbox"] {
-        width: 25px; /* Atur lebar */
-        height: 25px; /* Atur tinggi */
-        margin: 5px; /* Tambahkan margin jika diperlukan */
+        width: 25px; 
+        height: 25px; 
+        margin: 5px; 
     }
 </style>
 

@@ -68,7 +68,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, quasi! Sin
 <li>Illo amet nesciunt ipsam velit? Perferendis quo, corrupti assumenda ipsa commodi laborum aliquam..</li>
 </ol>
 
-<strong>Bartender</strong>
+<strong>Barista</strong>
 <ol>
 <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
 <li>Illo amet nesciunt ipsam velit? Perferendis quo, corrupti assumenda ipsa commodi laborum aliquam..</li>
