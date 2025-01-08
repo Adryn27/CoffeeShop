@@ -30,7 +30,7 @@
                                 class="img-fluid w-100" 
                                 style="height:300px; object-fit:cover"
                             >
-                            <div class="carousel-caption d-block">
+                            <div class="carousel-caption d-none d-md-block">
                                 <h5>{{ $row->nama_menu }}</h5>
                                 <p>{{ $row->deskripsi }}</p>
                             </div>
