@@ -46,8 +46,8 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, quasi! Sin
 </table>
 
 ## ERD & LRS
-<p align="center"><img src="image/ERD.jpg" width="600" alt="ERD"></p>
-<p align="center"><img src="image/LRS.jpg" width="600" alt="LRS"></p>
+<p align="center"><img src="public/image/ERD.png" width="600" alt="ERD"></p>
+<p align="center"><img src="public/image/LRS.jpeg" width="600" alt="LRS"></p>
 
 ## Skenario Kebutuhan Pengguna
 <strong>Pelanggan</strong>
