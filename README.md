@@ -52,26 +52,36 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, quasi! Sin
 ## Skenario Kebutuhan Pengguna
 <strong>Pelanggan</strong>
 <ol>
-<li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-<li>Illo amet nesciunt ipsam velit? Perferendis quo, corrupti assumenda ipsa commodi laborum aliquam..</li>
+<li>Dapat Melihat Menu.</li>
 </ol>
 
 <strong>Admin</strong>
 <ol>
-<li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-<li>Illo amet nesciunt ipsam velit? Perferendis quo, corrupti assumenda ipsa commodi laborum aliquam..</li>
+<li>Dapat Melakukan Login.</li>
+<li>Dapat Melakukan Manajemen Pengguna (Menambah/Mengedit/Menghapus Pengguna).</li>
+<li>Dapat Melakukan Manajemen Kategori (Menambah/Mengedit/Menghapus Kategori).</li>
+<li>Dapat Melakukan Manajemen Menu (Menambah/Mengedit/Menghapus Menu).</li>
+<li>Dapat Melihat Data Pesanan Pelanggan.</li>
+<li>Dapat Melakukan Tambah/Edit/Menghapus Pesanan.</li>
+<li>Dapat Memproses Pesanan Pelanggan.</li>
+<li>Dapat Mencetak Laporan Detail Pesanan.</li>
+<li>Dapat Mencetak Laporan Transaksi.</li>
 </ol>
 
 <strong>Kasir</strong>
 <ol>
-<li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-<li>Illo amet nesciunt ipsam velit? Perferendis quo, corrupti assumenda ipsa commodi laborum aliquam..</li>
+<li>Dapat Melakukan Login.</li>
+<li>Dapat Melihat Data Pesanan Pelanggan.</li>
+<li>Dapat Melakukan Tambah/Edit/Menghapus Pesanan.</li>
+<li>Dapat Mencetak Laporan Detail Pesanan.</li>
+<li>Dapat Mencetak Laporan Transaksi.</li>
 </ol>
 
 <strong>Barista</strong>
 <ol>
-<li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-<li>Illo amet nesciunt ipsam velit? Perferendis quo, corrupti assumenda ipsa commodi laborum aliquam..</li>
+<li>Dapat Melakukan Login.</li>
+<li>Dapat Melihat Detail Pesanan Pelanggan.</li>
+<li>Dapat Memproses Pesanan Pelanggan.</li>
 </ol>
 <!-- Sesuaikan dengan hak akses dari project masing-masing kelompok -->
 
@@ -122,20 +132,56 @@ php artisan migrate:fresh --seed
 ## Screenshot
 <table width="100%">
 <tr>
-<td><h3 align="center">Menu 1</h3><img src="folder/image1.jpg"></td>
-<td><h3 align="center">Menu 2</h3><img src="folder/image2.jpg"></td>
+<td><h3 align="center">Halaman Menu Pelanggan</h3><img src="public/image/Menu Pelanggan.png"></td>
+<td><h3 align="center">Halaman Detail Menu Pelanggan</h3><img src="public/image/Detail Menu Pelanggan.png"></td>
 </tr>
 <tr>
-<td><h3 align="center">Menu 3</h3><img src="folder/image3.jpg"></td>
-<td><h3 align="center">Menu 4</h3><img src="folder/image4.jpg"></td>
+<td><h3 align="center">Halaman Login</h3><img src="public/image/Login.png"></td>
+<td><h3 align="center">Halaman Beranda</h3><img src="public/image/Beranda.png"></td>
 </tr>
 <tr>
-<td><h3 align="center">Menu 5</h3><img src="folder/image5.jpg"></td>
-<td><h3 align="center">Menu 6</h3><img src="folder/image6.jpg"></td>
+<td><h3 align="center">Halaman Profile Pengguna</h3><img src="public/image/Profile.png"></td>
+<td><h3 align="center">Halaman Daftar Pengguna</h3><img src="public/image/Data Pengguna.png"></td>
 </tr>
 <tr>
-<td><h3 align="center">Menu 7</h3><img src="folder/image7.jpg"></td>
-<td><h3 align="center">Menu 8</h3><img src="folder/image8.jpg"></td>
+<td><h3 align="center">Halaman Tambah Pengguna</h3><img src="public/image/Tambah Pengguna.png"></td>
+<td><h3 align="center">Halaman Edit Pengguna</h3><img src="public/image/Edit Pengguna.png"></td>
+</tr>
+<tr>
+<td><h3 align="center">Halaman Daftar Kategori</h3><img src="public/image/Daftar Kategori.png"></td>
+<td><h3 align="center">Halaman Tambah Kategori</h3><img src="public/image/Tambah Kategori.png"></td>
+</tr>
+<tr>
+<td><h3 align="center">Halaman Edit Kategori</h3><img src="public/image/Edit Kategori.png"></td>
+<td><h3 align="center">Halaman Daftar Menu</h3><img src="public/image/Daftar Menu.png"></td>
+</tr>
+<tr>
+<td><h3 align="center">Halaman Tambah Menu</h3><img src="public/image/Tambah Menu.png"></td>
+<td><h3 align="center">Halaman Edit Menu</h3><img src="public/image/Edit Menu.png"></td>
+</tr>
+<tr>
+<td><h3 align="center">Halaman Daftar Pesanan</h3><img src="public/image/Pesanan.png"></td>
+<td><h3 align="center">Halaman Tambah/Edit Pesanan</h3><img src="public/image/Tambah Pesanan.png"></td>
+</tr>
+<tr>
+<td><h3 align="center">Lanjutan Halaman Tambah/Edit Pesanan</h3><img src="public/image/Lanjutan Tambah Pesanan.png"></td>
+<td><h3 align="center">Halaman Daftar Proses Pesanan</h3><img src="public/image/Proses Pesanan.png"></td>
+</tr>
+<tr>
+<td><h3 align="center">Halaman Proses Pesanan Pelanggan</h3><img src="public/image/Detail Pesanan Pelanggan.png"></td>
+<td><h3 align="center">Halaman Laporan Detail Pesanan</h3><img src="public/image/Detail Pesanan.png"></td>
+</tr>
+<tr>
+<td><h3 align="center">Modal Cetak Laporan Detail Pesanan</h3><img src="public/image/Cetak Detail Pesanan.png"></td>
+<td><h3 align="center">Hasil Cetak Laporan Detail Pesanan</h3><img src="public/image/Laporan Detail Pesanan.png"></td>
+</tr>
+<tr>
+<td><h3 align="center">Halaman Laporan Transaksi</h3><img src="public/image/Transaksi.png"></td>
+<td><h3 align="center">Modal Cetak Laporan Transaksi</h3><img src="public/image/Cetak Transaksi.png"></td>
+</tr>
+<tr>
+<td><h3 align="center">Hasil Cetak Laporan Transaksi</h3><img src="public/image/Laporan Transaksi.png"></td>
+<td><h3 align="center">Hasil Cetak Struk Pesanan</h3><img src="public/image/Struk.png"></td>
 </tr>
 </table>
 
