@@ -12,7 +12,7 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        $kategori = Kategori::orderBy('nama_kategori', 'asc')->get();
+        $kategori = Kategori::orderBy('created_at', 'asc')->get();
         return view('Backend.v_kategori.index', [
             'judul' => 'Daftar Kategori',
             'kategori' => $kategori
