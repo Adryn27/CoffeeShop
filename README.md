@@ -63,6 +63,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, quasi! Sin
 <li>Dapat Melakukan Manajemen Menu (Menambah/Mengedit/Menghapus Menu).</li>
 <li>Dapat Melihat Data Pesanan Pelanggan.</li>
 <li>Dapat Melakukan Tambah/Edit/Menghapus Pesanan.</li>
+<li>Dapat Melihat Detail Pesanan Pelanggan.</li>
 <li>Dapat Memproses Pesanan Pelanggan.</li>
 <li>Dapat Mencetak Laporan Detail Pesanan.</li>
 <li>Dapat Mencetak Laporan Transaksi.</li>
