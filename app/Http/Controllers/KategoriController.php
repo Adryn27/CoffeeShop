@@ -14,7 +14,7 @@ class KategoriController extends Controller
     {
         $kategori = Kategori::orderBy('nama_kategori', 'asc')->get();
         return view('Backend.v_kategori.index', [
-            'judul' => 'kategori',
+            'judul' => 'Daftar Kategori',
             'kategori' => $kategori
         ]);
     }
@@ -58,7 +58,7 @@ class KategoriController extends Controller
     {
         $kategori = Kategori::findOrFail($id);
         return view('backend.v_kategori.edit', [
-            'judul' => 'kategori',
+            'judul' => 'Edit Kategori',
             'edit' => $kategori
         ]);
     }

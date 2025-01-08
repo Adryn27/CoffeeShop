@@ -39,7 +39,7 @@
                   @if($row->status == 'dibayar')
                     <span class="badge bg-success" style="color: white">Bayar</span>
                   @else
-                    <span class="badge bg-warning" style="color: white">Belum</span>
+                    <span class="badge bg-danger" style="color: white">Belum</span>
                   @endif
                 </td>
                 <td>{{ $row->created_at }}</td>

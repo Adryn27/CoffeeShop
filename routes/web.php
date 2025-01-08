@@ -5,6 +5,7 @@ use App\Http\Controllers\DetailPesananController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\MenuPelangganController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\ProsesPesananController;
 use App\Http\Controllers\UserController;
@@ -25,12 +26,14 @@ Route::get('/logout',[LoginController::class,'logoutBackend'])->name('backend.lo
 Route::resource('/user',UserController::class, ['as'=>'backend'])->middleware('auth');
 Route::get('profile', [UserController::class, 'profil'])->name('profile')->middleware('auth');
 
-
 // Kategori
-Route::resource('/kategori',KategoriController::class, ['as'=>'backend'])->middleware('auth');
+Route::resource('/daftar/kategori',KategoriController::class, ['as'=>'backend'])->middleware('auth');
 
 // Menu
-Route::resource('/menu',MenuController::class, ['as'=>'backend'])->middleware('auth');
+Route::resource('/daftar/menu',MenuController::class, ['as'=>'backend'])->middleware('auth');
+
+// Menu Pelanggan
+Route::get('/menu', [MenuPelangganController::class, 'index'])->name('menu.pelanggan');
 
 // Pesanan
 Route::resource('/pesanan',PesananController::class, ['as'=>'backend'])->middleware('auth');
