@@ -1,66 +1,146 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Coffee Shop
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<p align="center"><img src="public/image/UBSI.png" width="200" alt="Logo UBSI"></p>
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Pengenalan Project
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, quasi! Sint aspernatur culpa, cupiditate vitae expedita sit impedit esse rem fugiat, modi est, eveniet iusto molestias qui deleniti voluptatum quos!
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Nama Kelompok
+<table border="1">
+  <thead>
+    <tr>
+      <td>No</td>
+      <td>NIM</td>
+      <td>Nama Anggota</td>
+    </tr>
+  <thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>19230339</td>
+      <td>Arman Jaya Laia</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>19231904</td>
+      <td>Arnanda Surya Mukti</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>19231669</td>
+      <td>Raihan Muhammad Ikhsan Swarga</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>19231320</td>
+      <td>Vivi Oktaviyanti</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>19230468</td>
+      <td>Willy Andryan</td>
+    </tr>
+  </tbody>
+</table>
 
-## Learning Laravel
+## ERD & LRS
+<p align="center"><img src="image/ERD.jpg" width="600" alt="ERD"></p>
+<p align="center"><img src="image/LRS.jpg" width="600" alt="LRS"></p>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Skenario Kebutuhan Pengguna
+<strong>Pelanggan</strong>
+<ol>
+<li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+<li>Illo amet nesciunt ipsam velit? Perferendis quo, corrupti assumenda ipsa commodi laborum aliquam..</li>
+</ol>
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+<strong>Admin</strong>
+<ol>
+<li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+<li>Illo amet nesciunt ipsam velit? Perferendis quo, corrupti assumenda ipsa commodi laborum aliquam..</li>
+</ol>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+<strong>Kasir</strong>
+<ol>
+<li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+<li>Illo amet nesciunt ipsam velit? Perferendis quo, corrupti assumenda ipsa commodi laborum aliquam..</li>
+</ol>
 
-## Laravel Sponsors
+<strong>Bartender</strong>
+<ol>
+<li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+<li>Illo amet nesciunt ipsam velit? Perferendis quo, corrupti assumenda ipsa commodi laborum aliquam..</li>
+</ol>
+<!-- Sesuaikan dengan hak akses dari project masing-masing kelompok -->
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Pra-Install
+Sebelumnya pastikan menginstall terlebih dahulu kebutuhan sistem untuk menggunakan project ini.
+- [x] Git
+- [x] Composer
+- [x] Code Editor <code>VS Code, Sublime Text atau sejenisnya</code>
+- [x] Web Server <code>Laragon, Xampp atau sejenisnya</code>
+- [x] Web Browser <code>Chrome, Mozilla atau sejenisnya</code>
+- [x] Node.js <code>(opsional)</code>
 
-### Premium Partners
+## Cara Install
+1. Cloning repository ini melalui terminal. Tunggu hingga selesai cloning.
+```
+git clone https://github.com/Adryn27/CoffeeShop.git
+```
+<!-- Ubah link diatas dengan link repository yang kalian -->
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+2.  Buka project menggunakan Code Editor, lalu inisiasi dependensi composer melalui terminal.
+```
+composer install
+```
+3. Duplikat file `.env.example` menjadi `.env` dan konfigurasikan koneksi database menjadi seperti ini pada file `.env`
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=db_coffeeshop
+DB_USERNAME=root
+DB_PASSWORD=
+```
+<!-- Ubah nama DB sesuai nama DB projectnya -->
 
-## Contributing
+4. Generate key aplikasi pada env melalui terminal.
+```
+php artisan key:generate
+```
+5. Generate Storage Link melalui terminal agar dapat mengakses storage.
+```
+php artisan storage:link
+```
+6. Migrasikan tabel beserta seeder melalui terminal.
+```
+php artisan migrate:fresh --seed
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Screenshot
+<table width="100%">
+<tr>
+<td><h3 align="center">Menu 1</h3><img src="folder/image1.jpg"></td>
+<td><h3 align="center">Menu 2</h3><img src="folder/image2.jpg"></td>
+</tr>
+<tr>
+<td><h3 align="center">Menu 3</h3><img src="folder/image3.jpg"></td>
+<td><h3 align="center">Menu 4</h3><img src="folder/image4.jpg"></td>
+</tr>
+<tr>
+<td><h3 align="center">Menu 5</h3><img src="folder/image5.jpg"></td>
+<td><h3 align="center">Menu 6</h3><img src="folder/image6.jpg"></td>
+</tr>
+<tr>
+<td><h3 align="center">Menu 7</h3><img src="folder/image7.jpg"></td>
+<td><h3 align="center">Menu 8</h3><img src="folder/image8.jpg"></td>
+</tr>
+</table>
 
-## Code of Conduct
+## Lisensi
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Project ini dibuat untuk menyelesaikan project mata kuliah Web Programming II Universitas Bina Sarana Informatika (UBSI) yang diampu oleh Bpk. <a href="https://github.com/yuris60">Yuris Alkhalifi, M.Kom., CPDSA</a> selaku Dosen. Project ini bersifat open source untuk edukasi.
+<!-- Kalian boleh mengubah bentuk lisensi ini sesuai kesepakatan kelompok apakah akan bersifat open source atau tidak -->
+<blockquote>Kuliah...? BSI AJA !!</blockquote>
