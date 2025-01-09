@@ -5,7 +5,9 @@
 
 ## Pengenalan Project
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, quasi! Sint aspernatur culpa, cupiditate vitae expedita sit impedit esse rem fugiat, modi est, eveniet iusto molestias qui deleniti voluptatum quos!
+Coffee Shop merupakan salah satu tempat yang saat ini banyak diminati oleh masyarakat dikarenakan sangat cocok untuk dijadikan tempat untuk quality time bersama teman, maupun rekan kerja. Selain itu, coffee shop juga sering dijadikan sebagai tempat untuk mengerjakan tugas, berdiskusi, atau melakukan meeting. Hal ini dikarenakan coffee shop memiliki fasilitas yang mendukung, seperti Wi-Fi, design tempat yang instagramable, bahan bacaan gratis, seperti komik atau majalah, dan colokan listrik. 
+
+Oleh karena itu, coffee shop menjadi tempat yang paling sering dikunjungi oleh para remaja, terkhususnya pada weekend. Tentu ini menimbulkan keramaian. Nah, untuk menghindari human eror yakni kesalahan dalam pencatatan pesanan pelanggan, kami membuat website dengan sistem POS yang mendukung pengelolaan kasir pada coffee shop. Alasan lainnya, dikarenakan untuk mempercepat antrian. Dengan adanya sistem pengelolaan kasir ini, diharapkan dapat mempercepat proses transaksi dan pengelolaan pesanannya terorganisir.
 
 ## Nama Kelompok
 <table border="1">
